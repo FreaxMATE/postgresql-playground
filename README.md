@@ -1,0 +1,2 @@
+# postgresql-playground
+Exploring PostgreSQL
