@@ -1,0 +1,8 @@
+.git
+.gitignore
+.postgres
+*.md
+flake.nix
+flake.lock
+.envrc
+.direnv

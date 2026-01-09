@@ -1,0 +1,21 @@
+# PostgreSQL data directory (Nix)
+.postgres/
+.pgdata/
+
+# Direnv
+.direnv/
+
+# Nix
+result
+result-*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
