@@ -70,6 +70,11 @@ END $$;
 
 -- Your solution here:
 
+SELECT m.first_name, m.last_name
+FROM members m
+LEFT JOIN borrowings br ON br.member_id = m.member_id
+WHERE b.borrowing_id IS NULL;
+
 
 -- Solution:
 -- SELECT m.first_name, m.last_name, m.email
@@ -85,6 +90,14 @@ END $$;
 -- Hint: Use a subquery with AVG() in WHERE clause
 
 -- Your solution here:
+
+SELECT title, price
+FROM books
+WHERE price > (SELECT AVG(price) AS avg_book_price FROM BOOKS);
+
+
+
+
 
 
 -- Solution:

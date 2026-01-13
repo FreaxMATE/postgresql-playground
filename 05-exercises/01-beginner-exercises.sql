@@ -67,7 +67,7 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 -- Hint: Use WHERE clause with published_year
 
 -- Your solution here:
-
+SELECT title, published_year FROM books WHERE published_year > 2000;
 
 -- Solution:
 -- SELECT * FROM books WHERE published_year > 2000;
@@ -80,6 +80,9 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 -- Hint: Use WHERE with AND to combine conditions
 
 -- Your solution here:
+SELECT title, price FROM books WHERE (genre LIKE 'Fiction') AND (price < 15);
+
+
 
 
 -- Solution:
@@ -96,6 +99,10 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 
 -- Your solution here:
 
+SELECT title, price FROM books ORDER BY price DESC;
+
+
+
 
 -- Solution:
 -- SELECT title, author, price
@@ -110,6 +117,9 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 -- Hint: Use COUNT() and GROUP BY
 
 -- Your solution here:
+
+SELECT genre, COUNT(book_id) FROM books GROUP BY genre;
+
 
 
 -- Solution:
@@ -127,6 +137,11 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 
 -- Your solution here:
 
+UPDATE books SET price = price * 1.1 WHERE genre = 'Fantasy';
+
+
+
+
 
 -- Solution:
 -- UPDATE books
@@ -141,6 +156,14 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 -- Hint: JOIN borrowings with members and books
 
 -- Your solution here:
+
+SELECT borrowing_id, bk.title, borrow_date, m.first_name, m.last_name
+FROM borrowings b
+JOIN members m ON b.member_id = m.member_id
+JOIN books bk ON b.book_id = bk.book_id;
+
+
+
 
 
 -- Solution:
@@ -161,6 +184,10 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 
 -- Your solution here:
 
+INSERT INTO books (title, author, published_year, genre, price, copies_available)
+VALUES ('The Midnight Library', 'Matt Haig', 2020, 'Fiction', 14.99, 5);
+
+
 
 -- Solution:
 -- INSERT INTO books (title, author, published_year, genre, price, copies_available)
@@ -175,6 +202,9 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 
 -- Your solution here:
 
+DELETE FROM books WHERE copies_available = 0;
+
+
 
 -- Solution:
 -- DELETE FROM books WHERE copies_available = 0;
@@ -187,6 +217,13 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 -- Hint: Use AVG() with GROUP BY
 
 -- Your solution here:
+
+SELECT genre, AVG(price) AS average_price
+FROM books
+GROUP BY genre
+ORDER BY average_price DESC;
+
+
 
 
 -- Solution:
@@ -203,6 +240,12 @@ INSERT INTO borrowings (book_id, member_id, borrow_date, return_date, returned) 
 -- Hint: Use LIKE with % wildcard
 
 -- Your solution here:
+
+SELECT first_name, last_name, email
+FROM members
+WHERE email = '%@email.com';
+
+
 
 
 -- Solution:

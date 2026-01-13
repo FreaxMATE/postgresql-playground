@@ -65,6 +65,8 @@ SELECT * FROM students;
 
 ## Useful Commands While Learning
 
+### Basic Table Operations
+
 ```sql
 -- View all tables
 \dt
@@ -72,11 +74,62 @@ SELECT * FROM students;
 -- Describe a table (see columns, types, constraints)
 \d students
 
+-- List all tables and their owners
+\dt *
+
+-- Show table definition
+\d+ students
+
 -- View data in a table
 SELECT * FROM students;
 
 -- View just a few rows
 SELECT * FROM students LIMIT 5;
+```
+
+### Extra Useful Commands for This Section
+
+```sql
+-- Check table constraints and indexes
+\d students
+
+-- View column information in detail
+SELECT column_name, data_type, is_nullable 
+FROM information_schema.columns 
+WHERE table_name = 'students';
+
+-- Check all constraints on a table
+SELECT constraint_name, constraint_type 
+FROM information_schema.table_constraints 
+WHERE table_name = 'students';
+
+-- View default values for columns
+\d+ students
+
+-- See current schema
+\dn
+
+-- List all databases
+\l
+
+-- Show table size
+SELECT pg_size_pretty(pg_total_relation_size('students'));
+
+-- Count rows in table
+SELECT COUNT(*) FROM students;
+
+-- Check data types used
+SELECT distinct(data_type) 
+FROM information_schema.columns 
+WHERE table_name IN ('students', 'courses', 'enrollments');
+
+-- See all foreign keys in a table
+SELECT constraint_name, column_name, foreign_table_name 
+FROM information_schema.key_column_usage 
+WHERE table_name = 'enrollments';
+
+-- Drop a table if it exists (before recreating)
+DROP TABLE IF EXISTS students CASCADE;
 
 -- Clear screen
 \! clear
