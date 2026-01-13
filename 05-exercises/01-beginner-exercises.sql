@@ -243,7 +243,7 @@ ORDER BY average_price DESC;
 
 SELECT first_name, last_name, email
 FROM members
-WHERE email = '%@email.com';
+WHERE email LIKE '%@email.com';
 
 
 
